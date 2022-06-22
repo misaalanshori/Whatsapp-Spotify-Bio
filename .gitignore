@@ -1,0 +1,5 @@
+spotifySecret.py
+.cache*
+*.log
+spotifyToken.txt
+*.pyc
