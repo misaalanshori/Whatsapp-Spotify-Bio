@@ -51,6 +51,7 @@ def updateBio(text):
 
         resetPage()
         return True
-    except ElementNotInteractableException:
-        resetPage()
-        return False
+    except:
+        resetPage(25)
+        print("update fail, retry")
+        updateBio(text)
