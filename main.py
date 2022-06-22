@@ -16,7 +16,7 @@ try:
         cP = sgl.nowPlaying()
         print(cP)
         if cP['nowplaying']:
-            wbb.updateBio(f'lagi denger lagu {cP["title"]} oleh {" & ".join(cP["artists"])} ({cP["progress"]//60}:{cP["progress"]%60}/{cP["length"]//60}:{cP["length"]%60})')
+            wbb.updateBio(f'lagi denger lagu {cP["title"]} oleh {" & ".join(cP["artists"])} ({str(cP["progress"]//60).rjust(2, "0")}:{str(cP["progress"]%60).rjust(2, "0")}/{str(cP["length"]//60).rjust(2, "0")}:{str(cP["length"]%60).rjust(2, "0")})')
             time.sleep(5)
         else:
             wbb.updateBio(idleTexts[random.randint(0, len(idleTexts)-1)])

@@ -3,20 +3,6 @@ import spotifySecret as secret
 import spotipy
 import os
 
-# tokenfile = "spotifyToken.txt"
-
-
-# try:
-#     userToken = spotipy.util.prompt_for_user_token(secret.USERNAME,
-#                                                     secret.SCOPE,
-#                                                     secret.CLIENT_ID,
-#                                                     secret.CLIENT_SECRET,
-#                                                     secret.REDIRECT_URI)
-
-#     sp = spotipy.Spotify(auth=userToken)
-#     print("Logging in as:", sp.me()['display_name'])
-# except spotipy.exceptions.SpotifyException:
-#     print("Token Failed, Relog!")
 
 try:
     sp_oauth = spotipy.oauth2.SpotifyOAuth(client_id=secret.CLIENT_ID,client_secret=secret.CLIENT_SECRET,redirect_uri=secret.REDIRECT_URI,scope=secret.SCOPE)
@@ -29,7 +15,8 @@ try:
         code = sp_oauth.parse_response_code(response)
         token_info = sp_oauth.get_access_token(code)
 
-        userToken = token_info['access_token']
+    userToken = token_info['access_token']
+    
 
     sp = spotipy.Spotify(auth=userToken)
     print("Logging in as:", sp.me()['display_name'])
