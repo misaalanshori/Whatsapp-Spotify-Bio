@@ -24,6 +24,15 @@ except spotipy.exceptions.SpotifyException:
     print("Token Failed, Relog!")
 
 def nowPlaying():
+
+    global token_info, sp
+
+    if sp_oauth.is_token_expired(token_info):
+        token_info = sp_oauth.refresh_access_token(token_info['refresh_token'])
+        token = token_info['access_token']
+        sp = spotipy.Spotify(auth=token)
+
+
     curPlay = sp.current_user_playing_track()
     artists = []
 
